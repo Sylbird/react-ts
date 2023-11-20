@@ -1,0 +1,25 @@
+.draggable {
+  display: flex;
+}
+
+.hide {
+  display: none;
+}
+
+.slash {
+  text-decoration: line-through;
+}
+
+.task-handle {
+  fill: rgb(0, 0, 0);
+  height: 24px;
+  left: 0;
+  position: relative;
+  width: 24px;
+}
+
+li {
+  align-items: center;
+  display: flex;
+  list-style: none;
+}
