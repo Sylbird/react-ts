@@ -1,5 +1,4 @@
 import { FC, useEffect, useState } from 'react';
-import 'src/assets/styles/globalStyle.css';
 
 const WithTimer: FC = () => {
   const [counter, setCounter] = useState(0);
