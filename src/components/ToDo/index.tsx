@@ -1,98 +1,153 @@
-import { FC, useEffect, useState } from 'react';
+import { FC, useState } from 'react';
 
-type Task = {
+type TaskProps = {
+  id: string;
   checked: boolean;
   text: string;
 };
 
+const InitialTasks: TaskProps[] = [
+  {
+    id: crypto.randomUUID(),
+    checked: false,
+    text: 'First ToDo'
+  },
+  {
+    id: crypto.randomUUID(),
+    checked: false,
+    text: 'Second ToDo'
+  }
+];
+
 const ToDo: FC = () => {
-  const [task, setTask] = useState<Task[]>([]);
-  const [editInputValues, setEditInputValues] = useState<string[]>([]);
-  let addInputValue = 'a';
-  //let editInputValue = '';
-  const updatedEditInputValues = [...editInputValues];
-  const updatedTasks = [...task];
+  const [tasks, setTasks] = useState(InitialTasks);
+  const [editingTaskId, setEditingTaskId] = useState<string | null>(null);
 
-  const addTask = () => {
-    const newTask = { text: addInputValue, checked: false };
-    setTask([...task, newTask]);
-    setEditInputValues([...editInputValues, addInputValue]);
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    const { elements } = event.currentTarget;
+    const input = elements.namedItem('task') as HTMLInputElement;
+
+    const newTask: TaskProps = {
+      id: crypto.randomUUID(),
+      checked: false,
+      text: input.value
+    };
+
+    setTasks((prevTasks) => {
+      return [...prevTasks, newTask];
+    });
+
+    input.value = '';
   };
 
-  const handleCheckboxChange = (index: number) => {
-    updatedTasks[index].checked = !updatedTasks[index].checked;
-    setTask(updatedTasks);
+  const CreateHandleEdit = (id: string) => () => {
+    const editedTask = tasks.find((task) => task.id === id);
+    if (editedTask) {
+      const inputIndex = tasks.findIndex((task) => task.id === id);
+      const input = document.getElementsByName('updateTask')[
+        inputIndex
+      ] as HTMLInputElement;
+
+      input.value = editedTask.text;
+      setEditingTaskId(id);
+    }
   };
 
-  const handleTaskChange = (index: number) => {
-    updatedTasks[index].text = editInputValues[index];
-    setTask(updatedTasks);
+  const createHandleDelete = (id: string) => () => {
+    setTasks((prevTasks) => {
+      return prevTasks.filter((currentTask) => currentTask.id !== id);
+    });
   };
 
-  const handleTaskDelete = (index: number) => {
-    updatedTasks.splice(index, 1);
-    setTask(updatedTasks);
-    updatedEditInputValues.splice(index, 1);
-    setEditInputValues(updatedEditInputValues);
+  const handleUpdate = (id: string) => () => {
+    const editedTask = tasks.find((task) => task.id === id);
+    if (editedTask) {
+      const inputIndex = tasks.findIndex((task) => task.id === id);
+      const input = document.getElementsByName('updateTask')[
+        inputIndex
+      ] as HTMLInputElement;
+
+      editedTask.text = input.value;
+    }
+    setEditingTaskId(null);
   };
-  useEffect(() => {
-    console.log('Component rendered');
-  }, []);
+
+  const handleCheckBoxChange = (id: string) => () => {
+    setTasks((prevTasks) => {
+      return prevTasks.map((task) => {
+        if (task.id === id) {
+          return {
+            ...task,
+            checked: !task.checked
+          };
+        }
+        return task;
+      });
+    });
+  };
 
   return (
     <div>
-      <h2>ToDo List</h2>
-      <input
-        id="addToDo"
-        type="text"
-        placeholder="Add ToDo"
-        onChange={(e) => (addInputValue = e.target.value)}
-      />
-      <button onClick={addTask} type="button">
-        Add
-      </button>
-      <ul>
-        {task.map((task, index) => (
-          <li key={`task${index + 1}`}>
-            <span className="task-dragger">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                xmlSpace="preserve"
-                viewBox="0 0 32 32"
-              >
-                <path d="M10 6h4v4h-4zM18 6h4v4h-4zM10 14h4v4h-4zM18 14h4v4h-4zM10 22h4v4h-4zM18 22h4v4h-4z" />
-              </svg>
-            </span>
-            <input
-              type="checkbox"
-              checked={task.checked}
-              id={`task${index + 1}`}
-              onChange={() => handleCheckboxChange(index)}
-            />
-            <label
-              className={task.checked ? 'slash' : ''}
-              htmlFor={`task${index + 1}`}
-            >
-              {task.text}
-            </label>
-            <input
-              name={`input${index + 1}`}
-              type="text"
-              onChange={(e) => {
-                updatedEditInputValues[index] = e.target.value;
-                setEditInputValues(updatedEditInputValues);
-              }}
-              defaultValue={task.text}
-            />
-            <button onClick={() => handleTaskChange(index)} type="button">
-              Edit
-            </button>
-            <button onClick={() => handleTaskDelete(index)} type="button">
-              Delete
-            </button>
-          </li>
-        ))}
-      </ul>
+      <h2>§ToDo</h2>
+      <form onSubmit={handleSubmit}>
+        <input name="task" required type="text" />
+        <button>AddToDo</button>
+      </form>
+      <section>
+        <h3>TODO:</h3>
+        <ul>
+          {tasks.map((task) => {
+            return (
+              <li key={task.id}>
+                <input
+                  id={task.id}
+                  name="checkBox"
+                  type="checkbox"
+                  defaultChecked={task.checked}
+                  onChange={handleCheckBoxChange(task.id)}
+                />
+                {editingTaskId === task.id ? (
+                  <>
+                    <label style={{ display: 'none' }}>{task.text}</label>
+                    <input name="updateTask" type="text" />
+                    <button type="button" onClick={handleUpdate(task.id)}>
+                      Update
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setEditingTaskId(null)}
+                    >
+                      Cancel
+                    </button>
+                  </>
+                ) : (
+                  <>
+                    <label
+                      htmlFor={task.id}
+                      className={task.checked ? 'slash' : ''}
+                    >
+                      {task.text}
+                    </label>
+                    <input
+                      name="updateTask"
+                      type="text"
+                      style={{ display: 'none' }}
+                    />
+                    <button type="button" onClick={CreateHandleEdit(task.id)}>
+                      Edit
+                    </button>
+                    <button type="button" onClick={createHandleDelete(task.id)}>
+                      Delete
+                    </button>
+                  </>
+                )}
+              </li>
+            );
+          })}
+        </ul>
+      </section>
     </div>
   );
 };
