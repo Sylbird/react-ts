@@ -10,12 +10,7 @@ const InitialTasks: TaskProps[] = [
   {
     id: crypto.randomUUID(),
     checked: false,
-    text: 'First ToDo'
-  },
-  {
-    id: crypto.randomUUID(),
-    checked: false,
-    text: 'Second ToDo'
+    text: 'Guardar el estado de las tareas en el localStorage o indexedDB'
   }
 ];
 
@@ -90,13 +85,13 @@ const ToDo: FC = () => {
 
   return (
     <div>
-      <h2>§ToDo</h2>
+      <h2>§ToDo App</h2>
       <form onSubmit={handleSubmit}>
         <input name="task" required type="text" />
         <button>AddToDo</button>
       </form>
       <section>
-        <h3>TODO:</h3>
+        <h3>Tareas Por hacer:</h3>
         <ul>
           {tasks.map((task) => {
             return (

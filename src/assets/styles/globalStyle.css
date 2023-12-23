@@ -1,5 +1,6 @@
-.draggable {
-  display: flex;
+* {
+  margin: 0;
+  padding: 0;
 }
 
 .hide {
@@ -8,14 +9,6 @@
 
 .slash {
   text-decoration: line-through;
-}
-
-.task-handle {
-  fill: rgb(0, 0, 0);
-  height: 24px;
-  left: 0;
-  position: relative;
-  width: 24px;
 }
 
 li {
