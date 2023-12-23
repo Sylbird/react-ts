@@ -110,7 +110,9 @@ const ToDo: FC = () => {
                 />
                 {editingTaskId === task.id ? (
                   <>
-                    <label style={{ display: 'none' }}>{task.text}</label>
+                    <label htmlFor={task.id} style={{ display: 'none' }}>
+                      {task.text}
+                    </label>
                     <input name="updateTask" type="text" />
                     <button type="button" onClick={handleUpdate(task.id)}>
                       Update
