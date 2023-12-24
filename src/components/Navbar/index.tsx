@@ -12,14 +12,14 @@ const NavBar: FC = () => {
   return (
     <StyledNavbar>
       <ul>
-        <li className={isActive('/') ? 'active' : ''}>
-          <Link to={`/`}>Home</Link>
+        <li className={isActive('/react-ts') ? 'active' : ''}>
+          <Link to={`/react-ts`}>Home</Link>
         </li>
-        <li className={isActive('/Counter') ? 'active' : ''}>
-          <Link to={`/Counter`}>Counter</Link>
+        <li className={isActive('/react-ts/Counter') ? 'active' : ''}>
+          <Link to={`/react-ts/Counter`}>Counter</Link>
         </li>
-        <li className={isActive('/ToDo') ? 'active' : ''}>
-          <Link to={`/ToDo`}>ToDo App</Link>
+        <li className={isActive('/react-ts/ToDo') ? 'active' : ''}>
+          <Link to={`/react-ts/ToDo`}>ToDo App</Link>
         </li>
       </ul>
     </StyledNavbar>

@@ -6,7 +6,7 @@ import ToDo from 'src/components/ToDo';
 
 const router = createBrowserRouter([
   {
-    path: '/',
+    path: '/react-ts',
     element: (
       <>
         <Navbar />
@@ -19,11 +19,11 @@ const router = createBrowserRouter([
         element: <Home />
       },
       {
-        path: 'Counter',
+        path: '/react-ts/Counter',
         element: <Counter />
       },
       {
-        path: 'ToDo',
+        path: '/react-ts/ToDo',
         element: <ToDo />
       }
     ]
