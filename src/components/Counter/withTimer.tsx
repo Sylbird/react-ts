@@ -21,13 +21,17 @@ const WithTimer: FC = () => {
   }, [timer]);
 
   return (
-    <div>
-      <h2>§Increment Counter With Timer</h2>
-      <p>{counter}</p>
-      <button onClick={increase} type="button" className={hide ? 'hide' : ''}>
-        Increment
-      </button>
-      <p>You have {timer} seconds left.</p>
+    <div className="card">
+      <div>
+        <h2>§Increment Counter With Timer</h2>
+      </div>
+      <div>
+        <p>{counter}</p>
+        <button onClick={increase} type="button" className={hide ? 'hide' : ''}>
+          Increment
+        </button>
+        <p>You have {timer} seconds left.</p>
+      </div>
     </div>
   );
 };
