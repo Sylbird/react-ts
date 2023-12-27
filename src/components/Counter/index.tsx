@@ -1,5 +1,4 @@
 import { FC, useState } from 'react';
-import StyledCounter from 'src/components/Counter/StyledCounter';
 import WithTimer from 'src/components/Counter/withTimer';
 
 const Counter: FC = () => {
@@ -7,7 +6,7 @@ const Counter: FC = () => {
   const increase = () => setCounter(counter + 1);
   const decrease = () => setCounter(counter - 1);
   return (
-    <StyledCounter>
+    <main>
       <div className="card">
         <div>
           <h2>§ Increment/Decrease Counter</h2>
@@ -19,17 +18,17 @@ const Counter: FC = () => {
             </div>
             <div>
               <button type="button" onClick={increase}>
-                Increment
+                Incrementar
               </button>
               <button type="button" onClick={decrease}>
-                decrease
+                Decrementar
               </button>
             </div>
           </div>
         </div>
       </div>
       <WithTimer />
-    </StyledCounter>
+    </main>
   );
 };
 
