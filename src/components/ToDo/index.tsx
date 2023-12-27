@@ -11,7 +11,7 @@ const InitialTasks: TaskProps[] = [
   {
     id: crypto.randomUUID(),
     checked: false,
-    text: 'Guardar el estado de las tareas en el localStorage o indexedDB'
+    text: 'Guardar el estado de las tareas en el localStorage o indexedDB.'
   },
   {
     id: crypto.randomUUID(),
@@ -93,11 +93,11 @@ const ToDo: FC = () => {
     <StyledToDo>
       <div className="card">
         <div>
-          <h2>§ToDo App</h2>
+          <h2>§ ToDoApp</h2>
         </div>
         <form onSubmit={handleSubmit}>
           <input name="task" id="task" required type="text" />
-          <button>AddToDo</button>
+          <button>Agregar Tarea</button>
           <h3>
             <label htmlFor="task">Tareas Por hacer:</label>
           </h3>
@@ -122,13 +122,13 @@ const ToDo: FC = () => {
                       <input name="updateTask" type="text" />
                       <div>
                         <button type="button" onClick={handleUpdate(task.id)}>
-                          Update
+                          Actualizar
                         </button>
                         <button
                           type="button"
                           onClick={() => setEditingTaskId(null)}
                         >
-                          Cancel
+                          Cancelar
                         </button>
                       </div>
                     </>
@@ -150,13 +150,14 @@ const ToDo: FC = () => {
                           type="button"
                           onClick={CreateHandleEdit(task.id)}
                         >
-                          Edit
+                          Editar
                         </button>
                         <button
+                          className="danger"
                           type="button"
                           onClick={createHandleDelete(task.id)}
                         >
-                          Delete
+                          Eliminar
                         </button>
                       </div>
                     </>

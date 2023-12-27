@@ -14,8 +14,8 @@ function Home() {
           </div>
           <div className="text-container">
             <p>
-              Aqui planeo subir ejercicios usando React + TypeScript, asi como
-              pequeños proyectos hechos con estas tecnologias.
+              Esta pagina tiene como objetivo mostrar ejercicios realizados
+              usando React + TypeScript.
             </p>
             <div>
               <h2>§ Counter</h2>
@@ -23,7 +23,9 @@ function Home() {
             </div>
             <div>
               <h2>§ Counter with timer</h2>
-              <p>Incrementa el valor de un contador con un tiempo limitado.</p>
+              <p>
+                Incrementa el valor de un contador antes de que acabe el tiempo
+              </p>
             </div>
             <div>
               <h2>§ ToDo App</h2>

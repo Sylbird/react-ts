@@ -1,8 +1,10 @@
 import styled from 'styled-components';
 
 const StyledToDo = styled.main`
-  display: flex;
-  justify-content: center;
+  ul {
+    list-style: none;
+  }
+
   label {
     word-wrap: break-word;
   }

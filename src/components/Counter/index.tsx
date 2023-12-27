@@ -10,17 +10,21 @@ const Counter: FC = () => {
     <StyledCounter>
       <div className="card">
         <div>
-          <h2>§Increment/Decrease Counter</h2>
+          <h2>§ Increment/Decrease Counter</h2>
         </div>
         <div>
           <div className="text-container">
-            <p>{counter}</p>
-            <button type="button" onClick={increase}>
-              Increment
-            </button>
-            <button type="button" onClick={decrease}>
-              decrease
-            </button>
+            <div>
+              <p>{counter}</p>
+            </div>
+            <div>
+              <button type="button" onClick={increase}>
+                Increment
+              </button>
+              <button type="button" onClick={decrease}>
+                decrease
+              </button>
+            </div>
           </div>
         </div>
       </div>

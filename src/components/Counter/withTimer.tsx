@@ -7,6 +7,12 @@ const WithTimer: FC = () => {
 
   const increase = () => setCounter(counter + 1);
 
+  const reset = () => {
+    setCounter(0);
+    setTimer(10);
+    setHide(false);
+  };
+
   useEffect(() => {
     if (timer > 0) {
       const Timer = setInterval(() => {
@@ -23,14 +29,26 @@ const WithTimer: FC = () => {
   return (
     <div className="card">
       <div>
-        <h2>§Increment Counter With Timer</h2>
+        <h2>§ Increment Counter With Timer</h2>
       </div>
-      <div>
-        <p>{counter}</p>
-        <button onClick={increase} type="button" className={hide ? 'hide' : ''}>
-          Increment
-        </button>
-        <p>You have {timer} seconds left.</p>
+      <div className="text-container">
+        <div>
+          <p>{counter}</p>
+        </div>
+        <div>
+          {hide ? (
+            <button onClick={reset} type="button">
+              Reiniciar
+            </button>
+          ) : (
+            <button onClick={increase} type="button">
+              Incrementar
+            </button>
+          )}
+        </div>
+        <div>
+          <p>Tienes {timer} segundos.</p>
+        </div>
       </div>
     </div>
   );
