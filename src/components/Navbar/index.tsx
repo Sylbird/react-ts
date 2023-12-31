@@ -12,6 +12,11 @@ const NavBar: FC = () => {
           </NavLink>
         </li>
         <li>
+          <NavLink to={`/react-ts/Clock`} end>
+            Clock
+          </NavLink>
+        </li>
+        <li>
           <NavLink to={`/react-ts/Counter`} end>
             Counter
           </NavLink>

@@ -3,6 +3,7 @@ import Home from 'src/components/Home';
 import Counter from 'src/components/Counter';
 import Navbar from 'src/components/Navbar';
 import ToDo from 'src/components/ToDo';
+import Clock from 'src/components/Clock';
 
 const router = createBrowserRouter([
   {
@@ -17,6 +18,10 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <Home />
+      },
+      {
+        path: '/react-ts/Clock',
+        element: <Clock />
       },
       {
         path: '/react-ts/Counter',

@@ -18,6 +18,10 @@ function Home() {
               usando React + TypeScript.
             </p>
             <div>
+              <h2>§ Clock</h2>
+              <p>Muestra la fecha y hora.</p>
+            </div>
+            <div>
               <h2>§ Counter</h2>
               <p>Incrementa y decrementa el valor de un contador.</p>
             </div>

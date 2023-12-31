@@ -29,8 +29,9 @@ main{
   padding: 3rem 2rem 2rem 2rem;
 
   @media screen and (max-width: 767px) {
-    flex-direction: column;
     align-items: center;
+    flex-direction: column;
+    padding: 2rem 2rem 2rem 2rem;
   }
 }
 
@@ -73,7 +74,7 @@ body, #root {
 .card{
     background-color: rgba(37, 37, 68, 1);
     border-radius: 1rem;
-    padding: 1.3rem;
+    padding: 1rem 1.2rem 1rem 1.2rem;
     width: fit-content;
     overflow: auto;
 }
@@ -91,11 +92,11 @@ body, #root {
 .img-container {
   display: flex;
   justify-content: center;
-  margin-left: 1rem;
+  margin: 0rem 0rem 0rem 1rem;
   overflow: unset;
 
   @media screen and (max-width: 767px) {
-    margin-left: 0rem;
+    margin: 0rem 0rem 1rem 0rem;
   }
 }
 
