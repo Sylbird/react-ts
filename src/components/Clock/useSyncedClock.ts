@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 
 const useSyncedClock = (callback: () => void): void => {
   useEffect(() => {
-    let timeoutId: NodeJS.Timeout;
+    let timeoutId: number;
 
     timeoutId = setTimeout(() => {
       callback();
