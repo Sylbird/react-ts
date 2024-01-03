@@ -29,6 +29,11 @@ main{
   justify-content: center;
   padding: 3rem 2rem 2rem 2rem;
 
+  h1 {
+    text-align: center;
+    padding: 0 0 1.5rem 0;
+  }
+
   @media screen and (max-width: 767px) {
     align-items: center;
     padding: 2rem 2rem 2rem 2rem;
@@ -89,19 +94,20 @@ body, #root {
   }
 }
 
-.img-container {
-  display: flex;
-  justify-content: center;
-  margin: 0rem 0rem 0rem 1rem;
-  overflow: unset;
+.text-container {
+  word-break: break-word;
 
-  @media screen and (max-width: 767px) {
-    margin: 0rem 0rem 1rem 0rem;
+ > div {
+  margin-top: 1rem;
   }
 }
 
-.text-container > div {
-  margin-top: 1rem;
+.img-container {
+  @media screen and (max-width: 767px) {
+    display: flex;
+    justify-content: center;
+    margin: 0rem 0rem 1rem 0rem;
+  }
 }
 
 .slash {

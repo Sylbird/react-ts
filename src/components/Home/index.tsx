@@ -9,10 +9,10 @@ function Home() {
           <h1>Ejercicios con React + TypeScript</h1>
         </div>
         <div className="container">
-          <div className="img-container">
-            <img src={ReactLogo} alt="react+ts-logo" />
-          </div>
           <div className="text-container">
+            <div className="img-container">
+              <img src={ReactLogo} alt="react+ts-logo" />
+            </div>
             <p>
               Esta pagina tiene como objetivo mostrar ejercicios realizados
               usando React + TypeScript.
