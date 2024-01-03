@@ -24,13 +24,13 @@ const GlobalStyle = createGlobalStyle`
 
 main{
   display: flex;
+  flex-wrap: wrap;
   gap: 1.5rem;
   justify-content: center;
   padding: 3rem 2rem 2rem 2rem;
 
   @media screen and (max-width: 767px) {
     align-items: center;
-    flex-direction: column;
     padding: 2rem 2rem 2rem 2rem;
   }
 }
