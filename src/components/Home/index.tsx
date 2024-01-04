@@ -22,6 +22,13 @@ function Home() {
               <p>Muestra la fecha y hora.</p>
             </div>
             <div>
+              <h2>§ Stopwatch</h2>
+              <p>
+                Cronometro que cuenta los milisegundos que transcurrieron y los
+                convierte a tiempo (Horas, Minutos, Segundos y Milisegundos).
+              </p>
+            </div>
+            <div>
               <h2>§ Counter</h2>
               <p>Incrementa y decrementa el valor de un contador.</p>
             </div>

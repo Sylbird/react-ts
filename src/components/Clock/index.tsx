@@ -1,5 +1,6 @@
 import { useCallback, useState } from 'react';
-import { SimpleClock, StyledClock } from 'src/components/Clock/StyledClock';
+import Stopwatch from 'src/components/Clock/Stopwatch';
+import { ClockContainer, StyledClock } from 'src/components/Clock/StyledClock';
 import useSyncedClock from 'src/components/Clock/useSyncedClock';
 
 const Clock = () => {
@@ -20,22 +21,23 @@ const Clock = () => {
               <div>
                 <h3>Full DateTime</h3>
               </div>
-              <SimpleClock>
+              <ClockContainer>
                 <span>{dateTime.toString()}</span>
-              </SimpleClock>
+              </ClockContainer>
             </div>
             <div>
               <div>
                 <h3>Short DateTime (Locale)</h3>
               </div>
-              <SimpleClock>
+              <ClockContainer>
                 <span>{dateTime.toLocaleTimeString()}</span>
                 <span>{dateTime.toLocaleDateString()}</span>
-              </SimpleClock>
+              </ClockContainer>
             </div>
           </div>
         </div>
       </div>
+      <Stopwatch />
     </StyledClock>
   );
 };
