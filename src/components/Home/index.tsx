@@ -1,53 +1,60 @@
-import StyledHome from 'src/components/Home/StyledHome';
-import ReactLogo from 'src/assets/images/react-ts-logo.png';
+import TSxR192 from 'src/assets/images/TS+React@192.png';
+import TSxR256 from 'src/assets/images/TS+React@256.png';
+import Card from 'src/assets/styles/components/Card';
+import {
+  StyledImageContainer,
+  StyledTextContainer
+} from 'src/assets/styles/components/StyledContainers';
 
 function Home() {
+  const srcSet = `${TSxR192} 192w, ${TSxR256} 256w`;
   return (
-    <StyledHome>
-      <div className="card">
-        <div>
-          <h1>Ejercicios con React + TypeScript</h1>
-        </div>
-        <div className="container">
-          <div className="text-container">
-            <div className="img-container">
-              <img src={ReactLogo} alt="react+ts-logo" />
-            </div>
-            <p>
-              Esta pagina tiene como objetivo mostrar ejercicios realizados
-              usando React + TypeScript.
-            </p>
-            <div>
-              <h2>§ Clock</h2>
-              <p>Muestra la fecha y hora.</p>
-            </div>
-            <div>
-              <h2>§ Stopwatch</h2>
-              <p>
-                Cronometro que cuenta los milisegundos que transcurrieron y los
-                convierte a tiempo (Horas, Minutos, Segundos y Milisegundos).
-              </p>
-            </div>
-            <div>
-              <h2>§ Counter</h2>
-              <p>Incrementa y decrementa el valor de un contador.</p>
-            </div>
-            <div>
-              <h2>§ Counter with timer</h2>
-              <p>
-                Incrementa el valor de un contador antes de que acabe el tiempo
-              </p>
-            </div>
-            <div>
-              <h2>§ ToDo App</h2>
-              <p>
-                Crea una lista de tareas editables y las marca como completadas.
-              </p>
-            </div>
-          </div>
-        </div>
+    <Card>
+      <div>
+        <h1>Ejercicios con React + TypeScript</h1>
       </div>
-    </StyledHome>
+      <StyledTextContainer>
+        <StyledImageContainer>
+          <img
+            src={TSxR256}
+            alt="react+ts-logo"
+            srcSet={srcSet}
+            sizes="(max-width: 767px) 192px, 256px"
+          />
+        </StyledImageContainer>
+        <p>
+          Esta pagina tiene como objetivo mostrar ejercicios realizados usando
+          React + TypeScript.
+        </p>
+        <div>
+          <h2>§ Clock</h2>
+          <p>Muestra la fecha y hora.</p>
+        </div>
+        <div>
+          <h2>§ Stopwatch</h2>
+          <p>
+            Cronometro que cuenta los milisegundos que transcurrieron y los
+            convierte a tiempo (Horas, Minutos, Segundos y Milisegundos).
+          </p>
+        </div>
+        <div>
+          <h2>§ Counter</h2>
+          <p>Incrementa y decrementa el valor de un contador.</p>
+        </div>
+        <div>
+          <h2>§ Counter with timer</h2>
+          <p>
+            Incrementa el valor de un contador antes de que acabe el tiempo.
+          </p>
+        </div>
+        <div>
+          <h2>§ ToDo App</h2>
+          <p>
+            Crea una lista de tareas editables y las marca como completadas.
+          </p>
+        </div>
+      </StyledTextContainer>
+    </Card>
   );
 }
 

@@ -11,7 +11,9 @@ const router = createBrowserRouter([
     element: (
       <>
         <Navbar />
-        <Outlet />
+        <main>
+          <Outlet />
+        </main>
       </>
     ),
     children: [

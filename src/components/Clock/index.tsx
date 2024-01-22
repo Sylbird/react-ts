@@ -1,44 +1,54 @@
-import { useCallback, useState } from 'react';
+import { FC, useCallback, useState } from 'react';
+import Card from 'src/assets/styles/components/Card';
+import { StyledTextContainer } from 'src/assets/styles/components/StyledContainers';
 import Stopwatch from 'src/components/Clock/Stopwatch';
-import { ClockContainer, StyledClock } from 'src/components/Clock/StyledClock';
+import StyledTimeCard from 'src/components/Clock/StyledTimeCard';
 import useSyncedClock from 'src/components/Clock/useSyncedClock';
 
-const Clock = () => {
+const Time: FC<{ display: 'full' | 'short' }> = ({ display }) => {
   const [dateTime, setDateTime] = useState(new Date());
   const updateClock = useCallback(() => setDateTime(new Date()), []);
 
   useSyncedClock(updateClock);
 
+  switch (display) {
+    case 'full':
+      return (
+        <StyledTimeCard>
+          <span>{dateTime.toString()}</span>
+        </StyledTimeCard>
+      );
+    case 'short':
+      return (
+        <StyledTimeCard>
+          <span>{dateTime.toLocaleTimeString()}</span>
+          <span>{dateTime.toLocaleDateString()}</span>
+        </StyledTimeCard>
+      );
+  }
+};
+
+const Clock = () => {
   return (
-    <StyledClock>
-      <div className="card">
-        <div>
-          <h2>§ Clock</h2>
-        </div>
-        <div>
-          <div className="text-container">
+    <>
+      <Card title="Clock">
+        <StyledTextContainer>
+          <div>
             <div>
-              <div>
-                <h3>Full DateTime</h3>
-              </div>
-              <ClockContainer>
-                <span>{dateTime.toString()}</span>
-              </ClockContainer>
+              <h3>Full DateTime</h3>
             </div>
-            <div>
-              <div>
-                <h3>Short DateTime (Locale)</h3>
-              </div>
-              <ClockContainer>
-                <span>{dateTime.toLocaleTimeString()}</span>
-                <span>{dateTime.toLocaleDateString()}</span>
-              </ClockContainer>
-            </div>
+            <Time display="full" />
           </div>
-        </div>
-      </div>
+          <div>
+            <div>
+              <h3>Short DateTime (Locale)</h3>
+            </div>
+            <Time display="short" />
+          </div>
+        </StyledTextContainer>
+      </Card>
       <Stopwatch />
-    </StyledClock>
+    </>
   );
 };
 

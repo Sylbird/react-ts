@@ -1,11 +1,12 @@
-import { useEffect, useState } from 'react';
-import { ClockContainer } from 'src/components/Clock/StyledClock';
+import { FC, useEffect, useState } from 'react';
+import Card from 'src/assets/styles/components/Card';
+import { StyledTextContainer } from 'src/assets/styles/components/StyledContainers';
+import StyledTimeCard from 'src/components/Clock/StyledTimeCard';
 import { msToTime, padTo2Digits } from 'src/components/Clock/functions';
 import { ChronoType } from 'src/components/Clock/types';
 
-const Stopwatch = () => {
+const StopwatchTime: FC<{ isRunning: boolean }> = ({ isRunning }) => {
   const [milliseconds, setMilliseconds] = useState(0);
-  const [isRunning, setIsRunning] = useState(false);
 
   useEffect(() => {
     let intervalId: number;
@@ -20,46 +21,51 @@ const Stopwatch = () => {
 
   const stopwatchTime: ChronoType = msToTime(milliseconds);
 
+  return (
+    <>
+      <StyledTimeCard>
+        <div>
+          <span>{milliseconds}</span>
+          <abbr>ms</abbr>
+        </div>
+      </StyledTimeCard>
+      <StyledTimeCard>
+        <div>
+          <span>{padTo2Digits(stopwatchTime.hours)}:</span>
+          <span>{padTo2Digits(stopwatchTime.minutes)}:</span>
+          <span>{padTo2Digits(stopwatchTime.seconds)}.</span>
+          <span style={{ fontSize: '0.8rem' }}>
+            {padTo2Digits(stopwatchTime.milliseconds)}
+          </span>
+        </div>
+      </StyledTimeCard>
+    </>
+  );
+};
+
+const Stopwatch = () => {
+  const [isRunning, setIsRunning] = useState(false);
+
   const toggleStopwatch = () => {
     setIsRunning((prev) => !prev);
   };
 
   return (
-    <div className="card">
-      <div>
-        <h2>§ Stopwatch</h2>
-      </div>
-      <div>
-        <div className="text-container">
+    <Card title="Stopwatch">
+      <StyledTextContainer>
+        <div>
           <div>
-            <div>
-              <h3>Milliseconds</h3>
-            </div>
-            <ClockContainer>
-              <span>{milliseconds}</span>
-            </ClockContainer>
-            <div>
-              <h3>Stopwatch</h3>
-            </div>
-            <ClockContainer>
-              <div>
-                <span>{padTo2Digits(stopwatchTime.hours)}:</span>
-                <span>{padTo2Digits(stopwatchTime.minutes)}:</span>
-                <span>{padTo2Digits(stopwatchTime.seconds)}.</span>
-                <span style={{ fontSize: '0.8rem' }}>
-                  {padTo2Digits(stopwatchTime.milliseconds)}
-                </span>
-              </div>
-            </ClockContainer>
-            <div>
-              <button onClick={toggleStopwatch}>
-                {isRunning ? 'Stop' : 'Start'}
-              </button>
-            </div>
+            <h3>Cronometro</h3>
+          </div>
+          <StopwatchTime isRunning={isRunning} />
+          <div>
+            <button onClick={toggleStopwatch}>
+              {isRunning ? 'Stop' : 'Start'}
+            </button>
           </div>
         </div>
-      </div>
-    </div>
+      </StyledTextContainer>
+    </Card>
   );
 };
 

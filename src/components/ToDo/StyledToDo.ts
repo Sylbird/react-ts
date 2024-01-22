@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const StyledToDo = styled.main`
+const StyledToDo = styled.section`
   ul {
     list-style: none;
   }

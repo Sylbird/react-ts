@@ -1,4 +1,5 @@
 import { FC, useState } from 'react';
+import Card from 'src/assets/styles/components/Card';
 import StyledToDo from 'src/components/ToDo/StyledToDo';
 
 type TaskProps = {
@@ -11,7 +12,7 @@ const InitialTasks: TaskProps[] = [
   {
     id: crypto.randomUUID(),
     checked: false,
-    text: 'Guardar el estado de las tareas en el localStorage o indexedDB.'
+    text: 'Guardar el estado de las tareas en localStorage o indexedDB.'
   },
   {
     id: crypto.randomUUID(),
@@ -90,85 +91,77 @@ const ToDo: FC = () => {
   };
 
   return (
-    <StyledToDo>
-      <div className="card">
-        <div>
-          <h2>§ ToDoApp</h2>
-        </div>
-        <form onSubmit={handleSubmit}>
-          <input name="task" id="task" required type="text" />
-          <button>Agregar Tarea</button>
-          <h3>
-            <label htmlFor="task">Tareas Por hacer:</label>
-          </h3>
-        </form>
-        <section>
-          <ul>
-            {tasks.map((task) => {
-              return (
-                <li key={task.id}>
-                  <input
-                    id={task.id}
-                    name="checkBox"
-                    type="checkbox"
-                    defaultChecked={task.checked}
-                    onChange={handleCheckBoxChange(task.id)}
-                  />
-                  {editingTaskId === task.id ? (
-                    <>
-                      <label htmlFor={task.id} style={{ display: 'none' }}>
-                        {task.text}
-                      </label>
-                      <input name="updateTask" type="text" />
-                      <div>
-                        <button type="button" onClick={handleUpdate(task.id)}>
-                          Actualizar
-                        </button>
-                        <button
-                          type="button"
-                          onClick={() => setEditingTaskId(null)}
-                        >
-                          Cancelar
-                        </button>
-                      </div>
-                    </>
-                  ) : (
-                    <>
-                      <label
-                        htmlFor={task.id}
-                        className={task.checked ? 'slash' : ''}
+    <Card title="ToDoApp">
+      <form onSubmit={handleSubmit}>
+        <input name="task" id="task" required type="text" />
+        <button>Agregar Tarea</button>
+        <h3>
+          <label htmlFor="task">Tareas Por hacer:</label>
+        </h3>
+      </form>
+      <StyledToDo>
+        <ul>
+          {tasks.map((task) => {
+            return (
+              <li key={task.id}>
+                <input
+                  id={task.id}
+                  name="checkBox"
+                  type="checkbox"
+                  defaultChecked={task.checked}
+                  onChange={handleCheckBoxChange(task.id)}
+                />
+                {editingTaskId === task.id ? (
+                  <>
+                    <label htmlFor={task.id} style={{ display: 'none' }}>
+                      {task.text}
+                    </label>
+                    <input name="updateTask" type="text" />
+                    <div>
+                      <button type="button" onClick={handleUpdate(task.id)}>
+                        Actualizar
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => setEditingTaskId(null)}
                       >
-                        {task.text}
-                      </label>
-                      <input
-                        name="updateTask"
-                        type="text"
-                        style={{ display: 'none' }}
-                      />
-                      <div>
-                        <button
-                          type="button"
-                          onClick={CreateHandleEdit(task.id)}
-                        >
-                          Editar
-                        </button>
-                        <button
-                          className="danger"
-                          type="button"
-                          onClick={createHandleDelete(task.id)}
-                        >
-                          Eliminar
-                        </button>
-                      </div>
-                    </>
-                  )}
-                </li>
-              );
-            })}
-          </ul>
-        </section>
-      </div>
-    </StyledToDo>
+                        Cancelar
+                      </button>
+                    </div>
+                  </>
+                ) : (
+                  <>
+                    <label
+                      htmlFor={task.id}
+                      className={task.checked ? 'slash' : ''}
+                    >
+                      {task.text}
+                    </label>
+                    <input
+                      name="updateTask"
+                      type="text"
+                      style={{ display: 'none' }}
+                    />
+                    <div>
+                      <button type="button" onClick={CreateHandleEdit(task.id)}>
+                        Editar
+                      </button>
+                      <button
+                        className="danger"
+                        type="button"
+                        onClick={createHandleDelete(task.id)}
+                      >
+                        Eliminar
+                      </button>
+                    </div>
+                  </>
+                )}
+              </li>
+            );
+          })}
+        </ul>
+      </StyledToDo>
+    </Card>
   );
 };
 
