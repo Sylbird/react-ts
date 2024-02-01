@@ -1,12 +1,8 @@
 import { FC, useState } from 'react';
 import Card from 'src/assets/styles/components/Card';
+import Item from 'src/components/ToDo/Item';
 import StyledToDo from 'src/components/ToDo/StyledToDo';
-
-type TaskProps = {
-  id: string;
-  checked: boolean;
-  text: string;
-};
+import { TaskProps } from 'src/components/ToDo/types';
 
 const InitialTasks: TaskProps[] = [
   {
@@ -23,7 +19,6 @@ const InitialTasks: TaskProps[] = [
 
 const ToDo: FC = () => {
   const [tasks, setTasks] = useState(InitialTasks);
-  const [editingTaskId, setEditingTaskId] = useState<string | null>(null);
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -44,52 +39,6 @@ const ToDo: FC = () => {
     input.value = '';
   };
 
-  const CreateHandleEdit = (id: string) => () => {
-    const editedTask = tasks.find((task) => task.id === id);
-    if (editedTask) {
-      const inputIndex = tasks.findIndex((task) => task.id === id);
-      const input = document.getElementsByName('updateTask')[
-        inputIndex
-      ] as HTMLInputElement;
-
-      input.value = editedTask.text;
-      setEditingTaskId(id);
-    }
-  };
-
-  const createHandleDelete = (id: string) => () => {
-    setTasks((prevTasks) => {
-      return prevTasks.filter((currentTask) => currentTask.id !== id);
-    });
-  };
-
-  const handleUpdate = (id: string) => () => {
-    const editedTask = tasks.find((task) => task.id === id);
-    if (editedTask) {
-      const inputIndex = tasks.findIndex((task) => task.id === id);
-      const input = document.getElementsByName('updateTask')[
-        inputIndex
-      ] as HTMLInputElement;
-
-      editedTask.text = input.value;
-    }
-    setEditingTaskId(null);
-  };
-
-  const handleCheckBoxChange = (id: string) => () => {
-    setTasks((prevTasks) => {
-      return prevTasks.map((task) => {
-        if (task.id === id) {
-          return {
-            ...task,
-            checked: !task.checked
-          };
-        }
-        return task;
-      });
-    });
-  };
-
   return (
     <Card title="ToDoApp">
       <form onSubmit={handleSubmit}>
@@ -103,60 +52,12 @@ const ToDo: FC = () => {
         <ul>
           {tasks.map((task) => {
             return (
-              <li key={task.id}>
-                <input
-                  id={task.id}
-                  name="checkBox"
-                  type="checkbox"
-                  defaultChecked={task.checked}
-                  onChange={handleCheckBoxChange(task.id)}
-                />
-                {editingTaskId === task.id ? (
-                  <>
-                    <label htmlFor={task.id} style={{ display: 'none' }}>
-                      {task.text}
-                    </label>
-                    <input name="updateTask" type="text" />
-                    <div>
-                      <button type="button" onClick={handleUpdate(task.id)}>
-                        Actualizar
-                      </button>
-                      <button
-                        type="button"
-                        onClick={() => setEditingTaskId(null)}
-                      >
-                        Cancelar
-                      </button>
-                    </div>
-                  </>
-                ) : (
-                  <>
-                    <label
-                      htmlFor={task.id}
-                      className={task.checked ? 'slash' : ''}
-                    >
-                      {task.text}
-                    </label>
-                    <input
-                      name="updateTask"
-                      type="text"
-                      style={{ display: 'none' }}
-                    />
-                    <div>
-                      <button type="button" onClick={CreateHandleEdit(task.id)}>
-                        Editar
-                      </button>
-                      <button
-                        className="danger"
-                        type="button"
-                        onClick={createHandleDelete(task.id)}
-                      >
-                        Eliminar
-                      </button>
-                    </div>
-                  </>
-                )}
-              </li>
+              <Item
+                task={task}
+                tasks={tasks}
+                setTasks={setTasks}
+                key={task.id}
+              />
             );
           })}
         </ul>
