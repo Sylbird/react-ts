@@ -7,22 +7,22 @@ const NavBar: FC = () => {
     <StyledNavbar>
       <ul>
         <li>
-          <NavLink to={`/react-ts/`} end>
+          <NavLink to={`/`} end>
             Home
           </NavLink>
         </li>
         <li>
-          <NavLink to={`/react-ts/Clock`} end>
+          <NavLink to={`/Clock`} end>
             Clock
           </NavLink>
         </li>
         <li>
-          <NavLink to={`/react-ts/Counter`} end>
+          <NavLink to={`/Counter`} end>
             Counter
           </NavLink>
         </li>
         <li>
-          <NavLink to={`/react-ts/ToDo`} end>
+          <NavLink to={`/ToDo`} end>
             ToDoApp
           </NavLink>
         </li>
