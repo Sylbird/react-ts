@@ -1,31 +1,25 @@
 import { FC } from 'react';
-import { NavLink } from 'react-router-dom';
-import StyledNavbar from 'src/components/Navbar/StyledNavbar';
+import {
+  StyledNavbar,
+  StyledNavLink
+} from 'src/components/Navbar/StyledNavbar';
 
 const NavBar: FC = () => {
   return (
     <StyledNavbar>
       <ul>
-        <li>
-          <NavLink to={`/`} end>
-            Home
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to={`/Clock`} end>
-            Clock
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to={`/Counter`} end>
-            Counter
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to={`/ToDo`} end>
-            ToDoApp
-          </NavLink>
-        </li>
+        <StyledNavLink to={`/`} end>
+          Home
+        </StyledNavLink>
+        <StyledNavLink to={`/Clock`} end>
+          Clock
+        </StyledNavLink>
+        <StyledNavLink to={`/Counter`} end>
+          Counter
+        </StyledNavLink>
+        <StyledNavLink to={`/ToDo`} end>
+          ToDoApp
+        </StyledNavLink>
       </ul>
     </StyledNavbar>
   );
