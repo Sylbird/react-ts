@@ -1,4 +1,4 @@
-import { FC, useState } from 'react';
+import { FC, useRef, useState } from 'react';
 import { TaskProps } from 'src/components/ToDo/types';
 
 const Item: FC<{
@@ -6,36 +6,36 @@ const Item: FC<{
   tasks: TaskProps[];
   setTasks: React.Dispatch<React.SetStateAction<TaskProps[]>>;
 }> = ({ task, tasks, setTasks }) => {
+  const inputRef = useRef<HTMLInputElement>(null);
   const [editingTaskId, setEditingTaskId] = useState<string | null>(null);
 
-  const CreateHandleEdit = (id: string) => () => {
-    const editedTask = tasks.find((task) => task.id === id);
-    if (editedTask) {
-      const inputIndex = tasks.findIndex((task) => task.id === id);
-      const input = document.getElementsByName('updateTask')[
-        inputIndex
-      ] as HTMLInputElement;
-
-      input.value = editedTask.text;
+  const handleEdit = (id: string) => () => {
+    const taskToEdit = tasks.find((task) => task.id === id);
+    if (taskToEdit && inputRef.current) {
+      inputRef.current.value = taskToEdit.text;
       setEditingTaskId(id);
     }
   };
 
-  const createHandleDelete = (id: string) => () => {
+  const handleDelete = (id: string) => () => {
     setTasks((tasks) => {
       return tasks.filter((task) => task.id !== id);
     });
   };
 
   const handleUpdate = (id: string) => () => {
-    const editedTask = tasks.find((task) => task.id === id);
-    if (editedTask) {
-      const inputIndex = tasks.findIndex((task) => task.id === id);
-      const input = document.getElementsByName('updateTask')[
-        inputIndex
-      ] as HTMLInputElement;
+    const taskToUpdate = tasks.find((task) => task.id === id);
+    if (taskToUpdate && inputRef.current) {
+      taskToUpdate.text = inputRef.current.value;
 
-      editedTask.text = input.value;
+      setTasks((prevTasks) => {
+        return prevTasks.map((task) => {
+          if (task.id === id) {
+            return taskToUpdate;
+          }
+          return task;
+        });
+      });
     }
     setEditingTaskId(null);
   };
@@ -61,14 +61,14 @@ const Item: FC<{
         name="checkBox"
         type="checkbox"
         defaultChecked={task.checked}
-        onChange={handleCheckBoxChange(task.id)}
+        onClick={handleCheckBoxChange(task.id)}
       />
       {editingTaskId === task.id ? (
         <>
           <label htmlFor={task.id} style={{ display: 'none' }}>
             {task.text}
           </label>
-          <input name="updateTask" type="text" />
+          <input ref={inputRef} name="updateTask" type="text" />
           <div>
             <button type="button" onClick={handleUpdate(task.id)}>
               Actualizar
@@ -83,15 +83,20 @@ const Item: FC<{
           <label htmlFor={task.id} className={task.checked ? 'slash' : ''}>
             {task.text}
           </label>
-          <input name="updateTask" type="text" style={{ display: 'none' }} />
+          <input
+            ref={inputRef}
+            name="updateTask"
+            type="text"
+            style={{ display: 'none' }}
+          />
           <div>
-            <button type="button" onClick={CreateHandleEdit(task.id)}>
+            <button type="button" onClick={handleEdit(task.id)}>
               Editar
             </button>
             <button
               className="danger"
               type="button"
-              onClick={createHandleDelete(task.id)}
+              onClick={handleDelete(task.id)}
             >
               Eliminar
             </button>

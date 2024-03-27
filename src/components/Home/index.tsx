@@ -50,8 +50,10 @@ function Home() {
         <div>
           <h2>§ ToDo App</h2>
           <p>
-            Crea una lista de tareas editables y las marca como completadas.
+            Crea una lista de tareas que puedes editar y marcar como
+            completadas.
           </p>
+          <p>Por defecto guarda las tareas usando indexedDB.</p>
         </div>
       </StyledTextContainer>
     </Card>

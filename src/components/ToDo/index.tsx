@@ -1,24 +1,14 @@
-import { FC, useState } from 'react';
+import { FC, useRef, useState } from 'react';
 import Card from 'src/assets/styles/components/Card';
 import Item from 'src/components/ToDo/Item';
 import StyledToDo from 'src/components/ToDo/StyledToDo';
+import { useSyncToIndexedDB } from 'src/components/ToDo/indexedDB';
 import { TaskProps } from 'src/components/ToDo/types';
 
-const InitialTasks: TaskProps[] = [
-  {
-    id: crypto.randomUUID(),
-    checked: false,
-    text: 'Guardar el estado de las tareas en localStorage o indexedDB.'
-  },
-  {
-    id: crypto.randomUUID(),
-    checked: false,
-    text: 'Mejorar el estilo de la pagina.'
-  }
-];
-
 const ToDo: FC = () => {
-  const [tasks, setTasks] = useState(InitialTasks);
+  const firstRender = useRef(true);
+  const [tasks, setTasks] = useState<TaskProps[]>([]);
+  useSyncToIndexedDB(firstRender, tasks, setTasks);
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
