@@ -1,6 +1,6 @@
 import { FC, useEffect, useState } from 'react';
 import Card from 'src/assets/styles/components/Card';
-import { StyledTextContainer } from 'src/assets/styles/components/StyledContainers';
+import { TextContainer } from 'src/assets/styles/components/StyledContainers';
 import StyledTimeCard from 'src/components/Clock/StyledTimeCard';
 import { msToTime, padTo2Digits } from 'src/components/Clock/functions';
 import { ChronoType } from 'src/components/Clock/types';
@@ -52,7 +52,7 @@ const Stopwatch = () => {
 
   return (
     <Card title="Stopwatch">
-      <StyledTextContainer>
+      <TextContainer>
         <div>
           <div>
             <h3>Cronometro</h3>
@@ -64,7 +64,7 @@ const Stopwatch = () => {
             </button>
           </div>
         </div>
-      </StyledTextContainer>
+      </TextContainer>
     </Card>
   );
 };

@@ -1,27 +1,25 @@
-import TSxR192 from 'src/assets/images/TS+React@192.png';
-import TSxR256 from 'src/assets/images/TS+React@256.png';
+import { ReactxTs_SrcSet } from 'src/assets/images/srcSet';
 import Card from 'src/assets/styles/components/Card';
 import {
-  StyledImageContainer,
-  StyledTextContainer
+  ImageContainer,
+  TextContainer
 } from 'src/assets/styles/components/StyledContainers';
 
 function Home() {
-  const srcSet = `${TSxR192} 192w, ${TSxR256} 256w`;
   return (
     <Card>
       <div>
         <h1>Ejercicios con React + TypeScript</h1>
       </div>
-      <StyledTextContainer>
-        <StyledImageContainer>
+      <TextContainer>
+        <ImageContainer>
           <img
-            src={TSxR256}
             alt="react+ts-logo"
-            srcSet={srcSet}
+            srcSet={ReactxTs_SrcSet}
             sizes="(max-width: 767px) 192px, 256px"
+            style={{ float: 'right' }}
           />
-        </StyledImageContainer>
+        </ImageContainer>
         <p>
           Esta pagina tiene como objetivo mostrar ejercicios realizados usando
           React + TypeScript.
@@ -55,7 +53,7 @@ function Home() {
           </p>
           <p>Por defecto guarda las tareas usando indexedDB.</p>
         </div>
-      </StyledTextContainer>
+      </TextContainer>
     </Card>
   );
 }

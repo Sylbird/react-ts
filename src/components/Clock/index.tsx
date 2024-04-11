@@ -1,6 +1,6 @@
 import { FC, useCallback, useState } from 'react';
 import Card from 'src/assets/styles/components/Card';
-import { StyledTextContainer } from 'src/assets/styles/components/StyledContainers';
+import { TextContainer } from 'src/assets/styles/components/StyledContainers';
 import Stopwatch from 'src/components/Clock/Stopwatch';
 import StyledTimeCard from 'src/components/Clock/StyledTimeCard';
 import useSyncedClock from 'src/components/Clock/useSyncedClock';
@@ -32,7 +32,7 @@ const Clock = () => {
   return (
     <>
       <Card title="Clock">
-        <StyledTextContainer>
+        <TextContainer>
           <div>
             <div>
               <h3>Full DateTime</h3>
@@ -45,7 +45,7 @@ const Clock = () => {
             </div>
             <Time display="short" />
           </div>
-        </StyledTextContainer>
+        </TextContainer>
       </Card>
       <Stopwatch />
     </>

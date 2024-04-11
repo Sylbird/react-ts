@@ -1,6 +1,6 @@
 import { FC, useState } from 'react';
 import Card from 'src/assets/styles/components/Card';
-import { StyledTextContainer } from 'src/assets/styles/components/StyledContainers';
+import { TextContainer } from 'src/assets/styles/components/StyledContainers';
 import WithTimer from 'src/components/Counter/withTimer';
 
 const Counter: FC = () => {
@@ -10,7 +10,7 @@ const Counter: FC = () => {
   return (
     <>
       <Card title="Counter">
-        <StyledTextContainer>
+        <TextContainer>
           <div>
             <p>{counter}</p>
           </div>
@@ -22,7 +22,7 @@ const Counter: FC = () => {
               Decrementar
             </button>
           </div>
-        </StyledTextContainer>
+        </TextContainer>
       </Card>
       <WithTimer />
     </>

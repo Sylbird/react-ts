@@ -1,6 +1,6 @@
 import { FC, useEffect, useState } from 'react';
 import Card from 'src/assets/styles/components/Card';
-import { StyledTextContainer } from 'src/assets/styles/components/StyledContainers';
+import { TextContainer } from 'src/assets/styles/components/StyledContainers';
 
 const WithTimer: FC = () => {
   const [counter, setCounter] = useState(0);
@@ -30,7 +30,7 @@ const WithTimer: FC = () => {
 
   return (
     <Card title="Increment Counter With Timer">
-      <StyledTextContainer>
+      <TextContainer>
         <div>
           <p>{counter}</p>
         </div>
@@ -48,7 +48,7 @@ const WithTimer: FC = () => {
         <div>
           <p>Tienes {timer} segundos.</p>
         </div>
-      </StyledTextContainer>
+      </TextContainer>
     </Card>
   );
 };

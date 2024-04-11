@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const StyledTextContainer = styled.div`
+export const TextContainer = styled.div`
   word-break: break-word;
 
   > div {
@@ -8,10 +8,13 @@ export const StyledTextContainer = styled.div`
   }
 `;
 
-export const StyledImageContainer = styled.div`
+export const ImageContainer = styled.div`
+  line-height: 0;
   @media screen and (max-width: 767px) {
     display: flex;
     justify-content: center;
-    margin: 0rem 0rem 1rem 0rem;
+    img {
+      max-width: 100%;
+    }
   }
 `;
