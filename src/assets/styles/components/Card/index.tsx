@@ -9,11 +9,7 @@ type cardProps = {
 const Card: FC<cardProps> = ({ children, title }) => {
   return (
     <StyledCard>
-      {title && (
-        <div>
-          <h2>§ {title}</h2>
-        </div>
-      )}
+      {title && <h2>§ {title}</h2>}
       {children}
     </StyledCard>
   );

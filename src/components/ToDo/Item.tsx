@@ -1,4 +1,5 @@
 import { FC, useRef, useState } from 'react';
+import { ButtonContainer } from 'src/assets/styles/components/StyledContainers';
 import { TaskProps } from 'src/components/ToDo/types';
 
 const Item: FC<{
@@ -69,14 +70,14 @@ const Item: FC<{
             {task.text}
           </label>
           <input ref={inputRef} name="updateTask" type="text" />
-          <div>
+          <ButtonContainer>
             <button type="button" onClick={handleUpdate(task.id)}>
               Actualizar
             </button>
             <button type="button" onClick={() => setEditingTaskId(null)}>
               Cancelar
             </button>
-          </div>
+          </ButtonContainer>
         </>
       ) : (
         <>
@@ -89,7 +90,7 @@ const Item: FC<{
             type="text"
             style={{ display: 'none' }}
           />
-          <div>
+          <ButtonContainer>
             <button type="button" onClick={handleEdit(task.id)}>
               Editar
             </button>
@@ -100,7 +101,7 @@ const Item: FC<{
             >
               Eliminar
             </button>
-          </div>
+          </ButtonContainer>
         </>
       )}
     </li>

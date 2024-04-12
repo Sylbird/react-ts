@@ -15,10 +15,6 @@ const StyledCard = styled.div`
     color: rgba(49, 120, 198, 1);
   }
 
-  h3 {
-    padding-bottom: 0.5rem;
-  }
-
   button {
     background-color: rgba(49, 120, 198, 1);
     border: none;
@@ -31,7 +27,13 @@ const StyledCard = styled.div`
     &.danger {
       background-color: rgba(198, 49, 49, 1);
       &:hover {
+        animation: danger-loop 1.5s infinite;
         background-color: rgba(215, 20, 20, 1);
+        @keyframes danger-loop {
+          50% {
+            box-shadow: 0 0 10px 4px rgba(215, 20, 20, 1); /* Apply box shadow */
+          }
+        }
       }
     }
 

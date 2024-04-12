@@ -1,5 +1,6 @@
 import { FC, useRef, useState } from 'react';
 import Card from 'src/assets/styles/components/Card';
+import { DisplayContainer } from 'src/assets/styles/components/StyledContainers';
 import Item from 'src/components/ToDo/Item';
 import StyledToDo from 'src/components/ToDo/StyledToDo';
 import { useSyncToIndexedDB } from 'src/components/ToDo/indexedDB';
@@ -34,12 +35,10 @@ const ToDo: FC = () => {
       <form onSubmit={handleSubmit}>
         <input name="task" id="task" required type="text" />
         <button>Agregar Tarea</button>
-        <h3>
-          <label htmlFor="task">Tareas Por hacer:</label>
-        </h3>
       </form>
-      <StyledToDo>
-        <ul>
+      <h3>Tareas Por hacer:</h3>
+      <DisplayContainer>
+        <StyledToDo>
           {tasks.map((task) => {
             return (
               <Item
@@ -50,8 +49,8 @@ const ToDo: FC = () => {
               />
             );
           })}
-        </ul>
-      </StyledToDo>
+        </StyledToDo>
+      </DisplayContainer>
     </Card>
   );
 };

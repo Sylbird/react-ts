@@ -18,6 +18,7 @@ body, #root {
 /* Custom Chrome based scrollbar */
 ::-webkit-scrollbar {
   background-color: rgba(37, 37, 68, 1);
+  border-radius: 0.4rem;
   height: 0.4rem;
   width: 0.4rem;
 }
@@ -27,7 +28,9 @@ body, #root {
 }
 
 ::-webkit-scrollbar-thumb {
+  border-radius: 0.4rem;
   background-color: rgba(20, 180, 215, 1);
+  cursor: pointer;
 }
 //
 

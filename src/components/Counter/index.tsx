@@ -1,6 +1,10 @@
 import { FC, useState } from 'react';
 import Card from 'src/assets/styles/components/Card';
-import { TextContainer } from 'src/assets/styles/components/StyledContainers';
+import {
+  ButtonContainer,
+  Container,
+  DisplayContainer
+} from 'src/assets/styles/components/StyledContainers';
 import WithTimer from 'src/components/Counter/withTimer';
 
 const Counter: FC = () => {
@@ -10,19 +14,21 @@ const Counter: FC = () => {
   return (
     <>
       <Card title="Counter">
-        <TextContainer>
-          <div>
-            <p>{counter}</p>
-          </div>
-          <div>
-            <button type="button" onClick={increase}>
-              Incrementar
-            </button>
-            <button type="button" onClick={decrease}>
-              Decrementar
-            </button>
-          </div>
-        </TextContainer>
+        <Container>
+          <section>
+            <DisplayContainer>
+              <p>{counter}</p>
+            </DisplayContainer>
+            <ButtonContainer>
+              <button type="button" onClick={increase}>
+                Incrementar
+              </button>
+              <button type="button" onClick={decrease}>
+                Decrementar
+              </button>
+            </ButtonContainer>
+          </section>
+        </Container>
       </Card>
       <WithTimer />
     </>

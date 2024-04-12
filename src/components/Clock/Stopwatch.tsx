@@ -1,7 +1,10 @@
 import { FC, useEffect, useState } from 'react';
 import Card from 'src/assets/styles/components/Card';
-import { TextContainer } from 'src/assets/styles/components/StyledContainers';
-import StyledTimeCard from 'src/components/Clock/StyledTimeCard';
+import {
+  ButtonContainer,
+  Container,
+  DisplayContainer
+} from 'src/assets/styles/components/StyledContainers';
 import { msToTime, padTo2Digits } from 'src/components/Clock/functions';
 import { ChronoType } from 'src/components/Clock/types';
 
@@ -23,13 +26,13 @@ const StopwatchTime: FC<{ isRunning: boolean }> = ({ isRunning }) => {
 
   return (
     <>
-      <StyledTimeCard>
+      <DisplayContainer>
         <div>
           <span>{milliseconds}</span>
           <abbr>ms</abbr>
         </div>
-      </StyledTimeCard>
-      <StyledTimeCard>
+      </DisplayContainer>
+      <DisplayContainer>
         <div>
           <span>{padTo2Digits(stopwatchTime.hours)}:</span>
           <span>{padTo2Digits(stopwatchTime.minutes)}:</span>
@@ -38,7 +41,7 @@ const StopwatchTime: FC<{ isRunning: boolean }> = ({ isRunning }) => {
             {padTo2Digits(stopwatchTime.milliseconds)}
           </span>
         </div>
-      </StyledTimeCard>
+      </DisplayContainer>
     </>
   );
 };
@@ -52,19 +55,17 @@ const Stopwatch = () => {
 
   return (
     <Card title="Stopwatch">
-      <TextContainer>
-        <div>
-          <div>
-            <h3>Cronometro</h3>
-          </div>
+      <Container>
+        <section>
+          <h3>Cronometro</h3>
           <StopwatchTime isRunning={isRunning} />
-          <div>
+          <ButtonContainer>
             <button onClick={toggleStopwatch}>
               {isRunning ? 'Stop' : 'Start'}
             </button>
-          </div>
-        </div>
-      </TextContainer>
+          </ButtonContainer>
+        </section>
+      </Container>
     </Card>
   );
 };

@@ -1,8 +1,10 @@
 import { FC, useCallback, useState } from 'react';
 import Card from 'src/assets/styles/components/Card';
-import { TextContainer } from 'src/assets/styles/components/StyledContainers';
+import {
+  Container,
+  DisplayContainer
+} from 'src/assets/styles/components/StyledContainers';
 import Stopwatch from 'src/components/Clock/Stopwatch';
-import StyledTimeCard from 'src/components/Clock/StyledTimeCard';
 import useSyncedClock from 'src/components/Clock/useSyncedClock';
 
 const Time: FC<{ display: 'full' | 'short' }> = ({ display }) => {
@@ -14,16 +16,16 @@ const Time: FC<{ display: 'full' | 'short' }> = ({ display }) => {
   switch (display) {
     case 'full':
       return (
-        <StyledTimeCard>
+        <DisplayContainer>
           <span>{dateTime.toString()}</span>
-        </StyledTimeCard>
+        </DisplayContainer>
       );
     case 'short':
       return (
-        <StyledTimeCard>
+        <DisplayContainer>
           <span>{dateTime.toLocaleTimeString()}</span>
           <span>{dateTime.toLocaleDateString()}</span>
-        </StyledTimeCard>
+        </DisplayContainer>
       );
   }
 };
@@ -32,20 +34,16 @@ const Clock = () => {
   return (
     <>
       <Card title="Clock">
-        <TextContainer>
-          <div>
-            <div>
-              <h3>Full DateTime</h3>
-            </div>
+        <Container>
+          <section>
+            <h3>Full DateTime</h3>
             <Time display="full" />
-          </div>
-          <div>
-            <div>
-              <h3>Short DateTime (Locale)</h3>
-            </div>
+          </section>
+          <section>
+            <h3>Short DateTime (Locale)</h3>
             <Time display="short" />
-          </div>
-        </TextContainer>
+          </section>
+        </Container>
       </Card>
       <Stopwatch />
     </>

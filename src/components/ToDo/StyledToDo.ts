@@ -1,8 +1,9 @@
 import styled from 'styled-components';
 
-const StyledToDo = styled.section`
-  ul {
-    list-style: none;
+const StyledToDo = styled.ul`
+  list-style: none;
+  > li {
+    margin: 0.5rem 0 0 0;
   }
 
   label {

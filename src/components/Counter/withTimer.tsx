@@ -1,18 +1,24 @@
 import { FC, useEffect, useState } from 'react';
 import Card from 'src/assets/styles/components/Card';
-import { TextContainer } from 'src/assets/styles/components/StyledContainers';
+import {
+  ButtonContainer,
+  Container,
+  DisplayContainer
+} from 'src/assets/styles/components/StyledContainers';
 
 const WithTimer: FC = () => {
   const [counter, setCounter] = useState(0);
   const [timer, setTimer] = useState(10);
-  const [hide, setHide] = useState(false);
 
   const increase = () => setCounter(counter + 1);
+  const increaseBtn = document.getElementById(
+    'increaseBtn'
+  ) as HTMLButtonElement;
 
   const reset = () => {
     setCounter(0);
     setTimer(10);
-    setHide(false);
+    increaseBtn.disabled = false;
   };
 
   useEffect(() => {
@@ -24,31 +30,28 @@ const WithTimer: FC = () => {
         clearInterval(Timer);
       };
     } else {
-      setHide(true);
+      increaseBtn.disabled = true;
     }
-  }, [timer]);
+  }, [increaseBtn, timer]);
 
   return (
     <Card title="Increment Counter With Timer">
-      <TextContainer>
-        <div>
-          <p>{counter}</p>
-        </div>
-        <div>
-          {hide ? (
-            <button onClick={reset} type="button">
-              Reiniciar
-            </button>
-          ) : (
-            <button onClick={increase} type="button">
+      <Container>
+        <section>
+          <DisplayContainer>
+            <p>{counter}</p>
+          </DisplayContainer>
+          <ButtonContainer>
+            <button onClick={increase} type="button" id="increaseBtn">
               Incrementar
             </button>
-          )}
-        </div>
-        <div>
+            <button className="danger" onClick={reset} type="button">
+              Reiniciar
+            </button>
+          </ButtonContainer>
           <p>Tienes {timer} segundos.</p>
-        </div>
-      </TextContainer>
+        </section>
+      </Container>
     </Card>
   );
 };
