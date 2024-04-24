@@ -34,3 +34,10 @@ export const ImageContainer = styled.div`
     }
   }
 `;
+
+export const ErrorContainer = styled.div`
+  color: rgba(198, 49, 49, 1);
+  font-style: italic;
+  line-height: normal;
+  text-align: center;
+`;

@@ -51,6 +51,14 @@ function Home() {
           </p>
           <p>Por defecto guarda las tareas usando indexedDB.</p>
         </section>
+        <section>
+          <h2>§ A.I</h2>
+          <p>
+            <strong>1. Stable Diffusion:</strong> Crea una imagen a partir de
+            una descripción. Usa "Hugging Face API" para cargar el modelo y
+            crear la imagen.
+          </p>
+        </section>
       </Container>
     </Card>
   );

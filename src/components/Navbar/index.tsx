@@ -20,6 +20,9 @@ const NavBar: FC = () => {
         <StyledNavLink to={`/ToDo`} end>
           ToDoApp
         </StyledNavLink>
+        <StyledNavLink to={`/AI`} end>
+          A.I
+        </StyledNavLink>
       </ul>
     </StyledNavbar>
   );
