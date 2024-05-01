@@ -13,7 +13,8 @@ export const Form = styled.form`
     outline: none;
     padding: 0.5rem;
     resize: none;
-    width: 100%;
+    width: -webkit-fill-available;
+    width: -moz-available;
 
     &:disabled {
       color: rgba(255, 255, 255, 0.4);
@@ -21,6 +22,10 @@ export const Form = styled.form`
     &:focus {
       box-shadow: 0px 0px 2px 2px rgba(20, 180, 215, 1);
     }
+  }
+
+  @media screen and (max-width: 767px) {
+    flex-direction: column;
   }
 `;
 
