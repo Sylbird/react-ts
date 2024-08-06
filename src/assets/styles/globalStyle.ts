@@ -6,12 +6,11 @@ const GlobalStyle = createGlobalStyle`
   padding: 0;
 }
 
-body, #root {
+body {
   background-color: rgba(20, 20, 50, 1);
   color: rgba(255, 255, 255, 1);
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   height: 100vh;
-  overflow: auto;
   width: 100vw;
 }
 
@@ -40,15 +39,19 @@ main{
   flex-wrap: wrap;
   gap: 1.5rem;
   justify-content: center;
-  padding: 3rem 2rem 2rem 2rem;
+  padding: 2.5rem 2rem 2rem 2rem;
 
   @media screen and (max-width: 767px) {
-    padding: 1.5rem 1.5rem 1.5rem 1.5rem;
+    padding: 1rem 1rem 1rem 1rem;
   }
 }
 
 .slash {
   text-decoration: line-through;
+}
+
+textarea {
+  font-family: inherit;
 }
 
 `;
