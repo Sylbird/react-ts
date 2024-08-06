@@ -8,7 +8,7 @@ export const Form = styled.form`
   textarea {
     background-color: rgba(37, 37, 68, 1);
     border-radius: 5px;
-
+    border: none;
     color: rgba(255, 255, 255, 1);
     outline: none;
     padding: 0.5rem;
