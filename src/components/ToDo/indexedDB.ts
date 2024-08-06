@@ -3,12 +3,12 @@ import { TaskProps } from 'src/components/ToDo/types';
 
 const InitialTasks: TaskProps[] = [
   {
-    id: crypto.randomUUID(),
+    id: 'Default0',
     checked: true,
     text: 'Guardar el estado de las tareas en indexedDB.'
   },
   {
-    id: crypto.randomUUID(),
+    id: 'Default1',
     checked: false,
     text: 'Permitir la exportacion/importacion de las tareas.'
   }
