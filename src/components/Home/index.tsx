@@ -48,8 +48,9 @@ function Home() {
           <p>
             Crea una lista de tareas que puedes editar y marcar como
             completadas.
+            <br />
+            Por defecto guarda las tareas usando indexedDB.
           </p>
-          <p>Por defecto guarda las tareas usando indexedDB.</p>
         </section>
         <section>
           <h2>§ A.I</h2>
