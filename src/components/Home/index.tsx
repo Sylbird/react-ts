@@ -24,7 +24,15 @@ function Home() {
         </p>
         <section>
           <h2>§ Clock</h2>
-          <p>Muestra la fecha y hora.</p>
+          <p>
+            <strong>1. LocalDateTime:</strong> Muestra la fecha y hora local del
+            cliente y se actualiza cada segundo.
+          </p>
+          <p>
+            <strong>2. ServerDateTime:</strong> Obtiene la fecha y hora de
+            internet, esta opcion usa "timeapi.io" para obtener el tiempo basado
+            en la zona horaria del cliente, pero no se actualiza cada segundo.
+          </p>
         </section>
         <section>
           <h2>§ Stopwatch</h2>
