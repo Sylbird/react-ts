@@ -19,14 +19,14 @@ const DateTime: FC<{ display: 'full' | 'short' }> = ({ display }) => {
     case 'full':
       return (
         <DisplayContainer>
-          <span>{dateTime.toString()}</span>
+          <p>{dateTime.toString()}</p>
         </DisplayContainer>
       );
     case 'short':
       return (
         <DisplayContainer>
-          <span>{dateTime.toLocaleTimeString()}</span>
-          <span>{dateTime.toLocaleDateString()}</span>
+          <p>{dateTime.toLocaleTimeString()}</p>
+          <p>{dateTime.toLocaleDateString()}</p>
         </DisplayContainer>
       );
   }
@@ -48,8 +48,8 @@ const ServerDateTime = () => {
     <section>
       <h3>Server DateTime</h3>
       <DisplayContainer>
-        <span>{sDateTime.toLocaleTimeString()}</span>
-        <span>{sDateTime.toLocaleDateString()}</span>
+        <p>{sDateTime.toLocaleTimeString()}</p>
+        <p>{sDateTime.toLocaleDateString()}</p>
       </DisplayContainer>
       <ButtonContainer>
         <button onClick={getServerDateTime}>GetServerDateTime</button>
