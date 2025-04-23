@@ -6,6 +6,10 @@ const GlobalStyle = createGlobalStyle`
   padding: 0;
 }
 
+:root {
+    --swiper-theme-color: rgba(49, 120, 198, 1);
+}
+
 body {
   background-color: rgba(20, 20, 50, 1);
   color: rgba(255, 255, 255, 1);

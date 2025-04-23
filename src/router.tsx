@@ -5,6 +5,7 @@ import Navbar from 'src/components/Navbar';
 import ToDo from 'src/components/ToDo';
 import Clock from 'src/components/Clock';
 import StableDiffusion from 'src/components/AI';
+import Carousel from 'src/components/Carousel';
 
 const router = createBrowserRouter([
   {
@@ -37,6 +38,10 @@ const router = createBrowserRouter([
       {
         path: '/AI',
         element: <StableDiffusion />
+      },
+      {
+        path: '/Carousel',
+        element: <Carousel />
       }
     ]
   }

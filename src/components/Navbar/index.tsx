@@ -64,6 +64,9 @@ const NavBar: FC = () => {
             <StyledNavLink to={`/AI`} end>
               A.I
             </StyledNavLink>
+            <StyledNavLink to={`/Carousel`} end>
+              Carousel
+            </StyledNavLink>
           </li>
         </ul>
       </StyledSidebar>
