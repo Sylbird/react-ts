@@ -13,7 +13,7 @@ const Counter: FC = () => {
   const decrease = () => setCounter(counter - 1);
   return (
     <>
-      <Card title="Counter">
+      <Card title="§ Counter">
         <Container>
           <section>
             <DisplayContainer>

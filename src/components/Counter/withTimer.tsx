@@ -35,7 +35,7 @@ const WithTimer: FC = () => {
   }, [increaseBtn, timer]);
 
   return (
-    <Card title="Increment Counter With Timer">
+    <Card title="§ Increment Counter With Timer">
       <Container>
         <section>
           <DisplayContainer>

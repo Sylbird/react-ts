@@ -54,7 +54,7 @@ const Stopwatch = () => {
   };
 
   return (
-    <Card title="Stopwatch">
+    <Card title="§ Stopwatch">
       <Container>
         <section>
           <h3>Cronometro</h3>

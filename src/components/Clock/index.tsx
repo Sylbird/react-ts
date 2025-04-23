@@ -61,7 +61,7 @@ const ServerDateTime = () => {
 const Clock = () => {
   return (
     <>
-      <Card title="Clock">
+      <Card title="§ Clock">
         <Container>
           <section>
             <h3>Local DateTime</h3>

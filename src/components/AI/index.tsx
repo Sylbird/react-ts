@@ -57,7 +57,7 @@ const StableDiffusion = () => {
   };
 
   return (
-    <Card title="StableDiffusion">
+    <Card title="§ StableDiffusion">
       <DisplayContainer>
         <Canvas>
           <img

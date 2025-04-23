@@ -3,9 +3,9 @@ import styled from 'styled-components';
 const StyledCard = styled.div`
   background-color: rgba(37, 37, 68, 1);
   border-radius: 1rem;
-  padding: 1rem 1.2rem 1rem 1.2rem;
-  width: fit-content;
-  overflow: auto;
+  padding: 1rem;
+  max-width: -webkit-fill-available;
+  max-width: -moz-available;
 
   h1 {
     text-align: center;

@@ -31,7 +31,7 @@ const ToDo: FC = () => {
   };
 
   return (
-    <Card title="ToDoApp">
+    <Card title="§ ToDoApp">
       <form onSubmit={handleSubmit}>
         <input name="task" id="task" required type="text" />
         <button>Agregar Tarea</button>
