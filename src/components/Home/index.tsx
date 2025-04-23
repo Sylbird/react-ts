@@ -68,6 +68,13 @@ function Home() {
             crear la imagen.
           </p>
         </section>
+        <section>
+          <h2>$ Carousel</h2>
+          <p>
+            Un carrusel/slider responsivo creado usando "Swiper", puedes navegar
+            entre las tarjetas usando los botones o deslizando.
+          </p>
+        </section>
       </Container>
     </Card>
   );
